@@ -3,15 +3,15 @@ import { useState } from "react";
 
 export default function Input({ sendChangedText }) {
   const [text, setText] = useState();
-  function changeTextHandler(changedText) {
-    setText(changedText);
-    sendChangedText(changedText);
-  }
+
   return (
     <View>
       <TextInput
         value={text}
-        onChangeText={changeTextHandler}
+        onChangeText={(changedText) => {
+          setText(changedText);
+          sendChangedText(changedText);
+        }}
         style={{ backgroundColor: "#eee" }}
       />
     </View>
