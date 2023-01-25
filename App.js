@@ -36,7 +36,7 @@ export default function App() {
           setModalVisible(true);
         }}
       />
-      <Text>{enteredText}</Text>
+      <Text style={styles.text}>{enteredText}</Text>
     </View>
   );
 }
@@ -47,5 +47,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  text: {
+    fontSize: 18,
+    color: "purple",
   },
 });

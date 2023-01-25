@@ -35,7 +35,7 @@ export default function Input({
         <TextInput
           value={text}
           onChangeText={changeText}
-          style={{ backgroundColor: "red" }}
+          style={styles.input}
         />
         <Button
           title="Confirm"
@@ -60,5 +60,11 @@ const styles = StyleSheet.create({
   image: {
     height: 100,
     width: 100,
+  },
+  input: {
+    borderBottomColor: "#552055",
+    borderBottomWidth: 2,
+    width: "50%",
+    marginVertical: 10,
   },
 });
