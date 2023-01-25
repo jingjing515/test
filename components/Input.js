@@ -1,18 +1,27 @@
-import { View, TextInput } from "react-native";
+import { View, TextInput, Button } from "react-native";
 import { useState } from "react";
 
 export default function Input({ sendChangedText }) {
-  const [text, setText] = useState();
-
+  const [text, setText] = useState("default value");
+  function changeText(changedText) {
+    setText(changedText);
+  }
+  // function buttonPressed() {
+  //   sendChangedText(text);
+  // }
   return (
     <View>
       <TextInput
         value={text}
-        onChangeText={(changedText) => {
-          setText(changedText);
-          sendChangedText(changedText);
+        onChangeText={changeText}
+        style={{ backgroundColor: "red" }}
+      />
+      <Button
+        title="Confirm"
+        onPress={() => {
+          sendChangedText(text);
+          setText("");
         }}
-        style={{ backgroundColor: "#eee" }}
       />
     </View>
   );
