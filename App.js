@@ -8,6 +8,7 @@ import {
   View,
   SafeAreaView,
   ScrollView,
+  FlatList,
 } from "react-native";
 import Header from "./components/Header";
 import Input from "./components/Input";
@@ -54,7 +55,18 @@ export default function App() {
         cancelPressed={onCancel}
       />
       <View style={styles.bottomContainer}>
-        <ScrollView
+        <FlatList
+          data={goals}
+          renderItem={({ item }) => {
+            return (
+              <View  style={styles.textContainer}>
+                <Text style={styles.text}>{item.text}</Text>
+              </View>
+            );
+            // console.log(item);
+          }}
+        />
+        {/* <ScrollView
           // alwaysBounceVertical={false}
           contentContainerStyle={styles.contentContainerStyle}
         >
@@ -65,7 +77,7 @@ export default function App() {
               </View>
             );
           })}
-        </ScrollView>
+        </ScrollView> */}
       </View>
     </SafeAreaView>
   );
