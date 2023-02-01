@@ -14,7 +14,7 @@ export default function Input({
   modalIsVisible,
   cancelPressed,
 }) {
-  const [text, setText] = useState("default value");
+  const [text, setText] = useState("");
   function changeText(changedText) {
     setText(changedText);
   }
@@ -37,14 +37,22 @@ export default function Input({
           onChangeText={changeText}
           style={styles.input}
         />
-        <Button
-          title="Confirm"
-          onPress={() => {
-            sendChangedText(text);
-            setText("");
-          }}
-        />
-        <Button title="Cancel" onPress={cancelPressed} />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button
+              disabled={text.length === 0 ? true : false}
+              // disabled={!text.length}
+              title="Confirm"
+              onPress={() => {
+                sendChangedText(text);
+                setText("");
+              }}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={cancelPressed} />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -66,5 +74,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     width: "50%",
     marginVertical: 10,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+  },
+  button: {
+    marginHorizontal: 10,
+    width: "30%",
   },
 });
