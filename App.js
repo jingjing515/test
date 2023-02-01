@@ -10,6 +10,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
+import GoalItem from "./components/GoalItem";
 import Header from "./components/Header";
 import Input from "./components/Input";
 
@@ -56,13 +57,10 @@ export default function App() {
       />
       <View style={styles.bottomContainer}>
         <FlatList
+          contentContainerStyle={styles.contentContainerStyle}
           data={goals}
           renderItem={({ item }) => {
-            return (
-              <View  style={styles.textContainer}>
-                <Text style={styles.text}>{item.text}</Text>
-              </View>
-            );
+            return <GoalItem goal={item} />;
             // console.log(item);
           }}
         />
