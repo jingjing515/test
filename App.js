@@ -13,11 +13,19 @@ import Input from "./components/Input";
 
 export default function App() {
   const name = "my awesome app";
-  const [enteredText, setEnteredText] = useState("Your goals will appear here");
+  // const [enteredText, setEnteredText] = useState("Your goals will appear here");
+  const [goals, setGoals] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
   function onTextEntered(changedText) {
-    setEnteredText(changedText);
+    // setEnteredText(changedText);
+    // update goals array with the new text
+    const newGoal = { text: changedText, id: Math.random() };
+
+    // const newArray = [...goals, newGoal];
+    setGoals((prevGoals) => {
+      return [...prevGoals, newGoal];
+    });
     setModalVisible(false);
   }
 
@@ -45,9 +53,13 @@ export default function App() {
         cancelPressed={onCancel}
       />
       <View style={styles.bottomContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.text}>{enteredText}</Text>
-        </View>
+        {goals.map((goal) => {
+          return (
+            <View key={goal.id} style={styles.textContainer}>
+              <Text style={styles.text}>{goal.text}</Text>
+            </View>
+          );
+        })}
       </View>
     </SafeAreaView>
   );
@@ -81,5 +93,6 @@ const styles = StyleSheet.create({
   textContainer: {
     backgroundColor: "#999",
     borderRadius: 5,
+    marginBottom: 5,
   },
 });
