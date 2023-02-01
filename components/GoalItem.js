@@ -1,17 +1,24 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import React from "react";
 
-export default function GoalItem({ goal }) {
+export default function GoalItem({ goal, onDelete }) {
   return (
     <View style={styles.textContainer}>
       <Text style={styles.text}>{goal.text}</Text>
+      <Button
+        title="X"
+        onPress={() => {
+          onDelete(goal.id);
+        }}
+        color="black"
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 80,
+    fontSize: 18,
     color: "purple",
 
     padding: 15,
@@ -20,5 +27,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#999",
     borderRadius: 5,
     marginBottom: 15,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 });

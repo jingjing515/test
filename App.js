@@ -35,9 +35,18 @@ export default function App() {
   function onCancel() {
     setModalVisible(false);
   }
-  // function onAddTaskPress() {
-  //   setModalVisible(true);
-  // }
+  function onDeletePressed(deletedId) {
+    // console.log("delete pressed ", deletedId);
+    // let newArray = goals.filter((goal) => {
+    //   return goal.id !== deletedId;
+    // });
+    // setGoals(newArray);
+    setGoals((prevGoals) => {
+      return prevGoals.filter((goal) => {
+        return goal.id !== deletedId;
+      });
+    });
+  }
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
@@ -60,7 +69,7 @@ export default function App() {
           contentContainerStyle={styles.contentContainerStyle}
           data={goals}
           renderItem={({ item }) => {
-            return <GoalItem goal={item} />;
+            return <GoalItem goal={item} onDelete={onDeletePressed} />;
             // console.log(item);
           }}
         />
