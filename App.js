@@ -45,7 +45,9 @@ export default function App() {
         cancelPressed={onCancel}
       />
       <View style={styles.bottomContainer}>
-        <Text style={styles.text}>{enteredText}</Text>
+        <View style={styles.textContainer}>
+          <Text style={styles.text}>{enteredText}</Text>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -55,20 +57,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
   },
   topContainer: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
   bottomContainer: {
     flex: 4,
     backgroundColor: "#dcd",
-    alignSelf: "stretch",
+    alignItems: "center",
+
+    // alignSelf: "stretch",
   },
   text: {
     fontSize: 18,
     color: "purple",
+
+    padding: 5,
+  },
+  textContainer: {
+    backgroundColor: "#999",
+    borderRadius: 5,
   },
 });
