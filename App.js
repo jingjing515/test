@@ -7,6 +7,7 @@ import {
   TextInput,
   View,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import Header from "./components/Header";
 import Input from "./components/Input";
@@ -53,13 +54,18 @@ export default function App() {
         cancelPressed={onCancel}
       />
       <View style={styles.bottomContainer}>
-        {goals.map((goal) => {
-          return (
-            <View key={goal.id} style={styles.textContainer}>
-              <Text style={styles.text}>{goal.text}</Text>
-            </View>
-          );
-        })}
+        <ScrollView
+          // alwaysBounceVertical={false}
+          contentContainerStyle={styles.contentContainerStyle}
+        >
+          {goals.map((goal) => {
+            return (
+              <View key={goal.id} style={styles.textContainer}>
+                <Text style={styles.text}>{goal.text}</Text>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );
@@ -84,15 +90,18 @@ const styles = StyleSheet.create({
 
     // alignSelf: "stretch",
   },
+  scrollContentsStyle: {
+    alignItems: "center",
+  },
   text: {
-    fontSize: 18,
+    fontSize: 80,
     color: "purple",
 
-    padding: 5,
+    padding: 15,
   },
   textContainer: {
     backgroundColor: "#999",
     borderRadius: 5,
-    marginBottom: 5,
+    marginBottom: 15,
   },
 });
