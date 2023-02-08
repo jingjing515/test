@@ -47,6 +47,9 @@ export default function App() {
       });
     });
   }
+  function goalPressed(pressedId) {
+    console.log("pressed ", pressedId);
+  }
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar style="auto" />
@@ -69,7 +72,13 @@ export default function App() {
           contentContainerStyle={styles.contentContainerStyle}
           data={goals}
           renderItem={({ item }) => {
-            return <GoalItem goal={item} onDelete={onDeletePressed} />;
+            return (
+              <GoalItem
+                goal={item}
+                onDelete={onDeletePressed}
+                onGoalPress={goalPressed}
+              />
+            );
             // console.log(item);
           }}
         />
