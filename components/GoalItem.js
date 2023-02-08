@@ -6,7 +6,7 @@ export default function GoalItem({ goal, onDelete, onGoalPress }) {
     <View>
       <Pressable
         style={({ pressed }) => {
-          return [pressed && styles.pressedStyle, styles.textContainer];
+          return [styles.textContainer, pressed && styles.pressedStyle];
           // return pressed ? styles.pressedStyle : null;
           // if (pressed)
           // {
