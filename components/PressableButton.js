@@ -5,6 +5,7 @@ export default function PressableButton({
   buttonPressed,
   customizedStyle,
   pressedStyle,
+  children,
 }) {
   return (
     <Pressable
@@ -17,7 +18,7 @@ export default function PressableButton({
       }}
       onPress={buttonPressed}
     >
-      <Text>X</Text>
+      {children}
     </Pressable>
   );
 }

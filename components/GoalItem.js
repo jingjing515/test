@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import React from "react";
 import PressableButton from "./PressableButton";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function GoalItem({ goal, onDelete, onGoalPress }) {
   function goalPressed() {
@@ -31,13 +32,11 @@ export default function GoalItem({ goal, onDelete, onGoalPress }) {
         <PressableButton
           customizedStyle={styles.deleteButton}
           pressedStyle={styles.pressedStyle}
-          buttonPressed={
-            goalPressed
-            //   () => {
-            //   onDelete(goal.id);
-            // }
-          }
-        />
+          buttonPressed={goalPressed}
+        >
+          <Ionicons name="trash" size={30} color="black" />
+          {/* <Text>X</Text> */}
+        </PressableButton>
       </Pressable>
     </View>
   );
@@ -63,6 +62,6 @@ const styles = StyleSheet.create({
   },
   deleteButton: {
     paddingHorizontal: 5,
-    backgroundColor: "#25a",
+    backgroundColor: "#aaa",
   },
 });

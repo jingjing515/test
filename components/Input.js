@@ -5,8 +5,10 @@ import {
   Modal,
   StyleSheet,
   Image,
+  Text,
 } from "react-native";
 import { useState } from "react";
+import PressableButton from "./PressableButton";
 
 // Receive modalVisible in props
 export default function Input({
@@ -49,9 +51,16 @@ export default function Input({
               }}
             />
           </View>
-          <View style={styles.button}>
+          <PressableButton
+            buttonPressed={cancelPressed}
+            pressedStyle={styles.pressedStyle}
+            customizedStyle={styles.button}
+          >
+            <Text>Cancel</Text>
+          </PressableButton>
+          {/* <View style={styles.button}>
             <Button title="Cancel" onPress={cancelPressed} />
-          </View>
+          </View> */}
         </View>
       </View>
     </Modal>
@@ -81,5 +90,11 @@ const styles = StyleSheet.create({
   button: {
     marginHorizontal: 10,
     width: "30%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  pressedStyle: {
+    opacity: 0.5,
+    backgroundColor: "#f5f5aa",
   },
 });
